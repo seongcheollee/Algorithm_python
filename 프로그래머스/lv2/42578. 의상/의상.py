@@ -16,5 +16,5 @@ def solution(clothes):
     for i in dic:
         s *= (dic[i]+1)
         
-        
+    # 아무것도 입지 않은 경우의 수는 취급하지 않기 때문에 - 1로 반환
     return s - 1
