@@ -4,4 +4,5 @@ def solution(s):
     for i in sList:
         res.append(i.capitalize())
 
+    # join 사용시 공백까지 같이 추가
     return " ".join(res)
