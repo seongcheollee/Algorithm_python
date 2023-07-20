@@ -21,3 +21,12 @@ def solution(number, k):
     return ''.join(stk[:len(number)-k])
 
 
+
+
+
+
+
+
+
+
+
