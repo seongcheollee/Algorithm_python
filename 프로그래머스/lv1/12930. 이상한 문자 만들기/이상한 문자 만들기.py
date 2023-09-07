@@ -11,5 +11,5 @@ def solution(s):
                 temp += t.lower()
 
         res.append(temp)
-            
+    print(res)
     return ' '.join(res)
