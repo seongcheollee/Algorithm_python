@@ -28,9 +28,11 @@ def solution(begin, target, words):
             # 타겟 방문시 카운트 리턴
             if s == target:
                 return c
-                            
+            
+            # 단어목록을 방문하면서 조건 충족시 큐에 추가
             for w in words:
                 if check_change_word(s,w):
+                    # 카운트 변수의 경우 +1 
                     q.append((w, c+1))
         
         
