@@ -1,28 +1,31 @@
 from collections import deque
 
 def solution(begin, target, words):
-    res = 0
-    INF = int(1e9)
-    visited = [INF] * (len(words) +1)
+    
+    
+    # 변환 불가 0 리턴
     if not target in words:
         return 0
     
-    
+    # 변환 가능 여부 체크
     def check_change_word(s1, s2):
         cnt = 0
         for i in range(len(s1)):
             if s1[i] != s2[i]:
                 cnt += 1
         return cnt == 1 
-    # 모든 경우의 수 중에서 가장 짧은 애
-    # 
+
+    # 최단 거리이기 때문에 target에 가장 빨리 도착하는 카운트를 세면 됨.
     def bfs():
+        
+        # 단어와 카운트 변수 큐에 삽입 
         q = deque([(begin, 0)])
 
         while q:
             
             s, c = q.popleft()
             
+            # 타겟 방문시 카운트 리턴
             if s == target:
                 return c
                             
