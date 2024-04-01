@@ -1,27 +1,36 @@
 from collections import deque
 import sys
 
+input = sys.stdin.readline
+
 n, q = map(int, input().split())
-graph = [[] for _ in range(n+1)]
+g = [[] for _ in range(n + 1)]
 
 for _ in range(n-1):
-    a, b, usado = (map(int, input().split()))
-    graph[a].append((b, usado))
-    graph[b].append((a, usado))
+    s, e, u = map(int, input().split())
+    g[s].append((e, u))
+    g[e].append((s, u))
 
-for i in range(q):
-    k, v = map(int, input().split())
-    visited = [False] * (n + 1)
-    visited[v] = True
-    result = 0
-    q = deque([(v, float('inf'))])
+
+def bfs(k, st):
+    q = deque()
+    q.append((st, float('inf')))
+    visited = [0] * (n+1)
+    visited[st] = 1
+    res = 0
 
     while q:
-        v, usado = q.pop()
-        for next_v, next_usado in graph[v]:
-            next_usado = min(usado, next_usado)
-            if next_usado >= k and not visited[next_v]:
-                result += 1
-                q.append((next_v, next_usado))
-                visited[next_v] = True
-    print(result)
+        v, u = q.popleft()
+        for nv, nu in g[v]:
+            nu = min(u, nu)
+            if visited[nv] == 0 and nu >= k:
+                    res += 1
+                    q.append((nv,nu))
+                    visited[nv] = 1
+    return res
+
+
+
+for _ in range(q):
+    k, v = map(int, input().split())
+    print(bfs(k, v))
