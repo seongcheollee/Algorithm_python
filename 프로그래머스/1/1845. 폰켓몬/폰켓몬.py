@@ -1,6 +1,8 @@
 def solution(nums):
-    a = set(nums)
-    if len(nums) // 2 <len(a):
-        return len(nums) // 2
+    n = len(nums) // 2
+    s = len(set(nums))
+
+    if s < n:
+        return s
     else:
-        return len(set(nums))
+        return n
